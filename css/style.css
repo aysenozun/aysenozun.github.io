@@ -204,7 +204,7 @@ h4 {
 }
 
 .buton {
-    background-color: #23f0f7;
+    background-color: #d6e5e8;
     color: white;
     text-align: center;
     font-size: 1em;
@@ -213,6 +213,24 @@ h4 {
     border-radius:1px 1px;
     font-style:  initial;
     
+}
+
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #090a0a;
+  font-size: 18px;
+  background: #347ca8;
+  padding: 10px 20px 10px 20px;
+  border: solid #9b96b0 2px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #c3c7c9;
+  text-decoration: none;
 }
 
 .active {
