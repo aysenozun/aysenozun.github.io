@@ -555,6 +555,12 @@ main {
   line-height: 1.6;
 }
 
+.special-service-item {
+    background-color: #FFD700; /* Altın sarısı */
+    padding: 15px;
+    border-radius: 10px; /* Köşeleri yuvarlatma */
+}
+
 
 /**
  * #testimonials 
