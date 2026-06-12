@@ -49,6 +49,15 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+<style>
+		/* Sol menüyü ve arka planı tamamen beyaz yapar */
+		body, #colorlib-page, .container-wrap { background: #ffffff !important; }
+		aside#colorlib-aside { background: #ffffff !important; border-right: 1px solid #f0f0f0 !important; }
+		/* Sosyal medya ikonlarının altındaki gri çizgiyi beyazlatır */
+		.colorlib-footer .separator { border-top: 1px solid #f0f0f0 !important; }
+	</style>
+</head>
+		
 	</head>
 	<body>
 	<div id="colorlib-page">
@@ -90,62 +99,53 @@
 
 <div id="colorlib-main">
 
-			<section id="colorlib-hero" class="js-fullheight" data-section="home">
-				<div class="flexslider js-fullheight">
+			<!-- margin ve border-radius ile kaba dikdörtgen yapıyı kırıp oval modern bir kart yapıyoruz -->
+			<section id="colorlib-hero" class="js-fullheight" data-section="home" style="margin: 20px; border-radius: 30px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+				<div class="flexslider js-fullheight" style="border-radius: 30px;">
 					<ul class="slides">
 
 						<!-- 1. SLAYT: Ayşen Özün Giriş -->
-						<li style="position: relative; overflow: hidden; background: #1a1a1a;">
-							<!-- Derin Bulanık Arkaplan -->
-							<div class="overlay" style="position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px; background-image: url(images/2pega.png); background-size: cover; background-position: center; filter: blur(15px) brightness(35%); z-index: 1;"></div>
+						<li style="position: relative; overflow: hidden; background: #151515; border-radius: 30px;">
+							<!-- Arkaplan Bulanıklığı -->
+							<div class="overlay" style="position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px; background-image: url(images/2pega.png); background-size: cover; background-position: center; filter: blur(20px) brightness(30%); z-index: 1;"></div>
 							
-							<!-- İçerik Düzeni -->
-							<div class="container-fluid" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
-								<div class="row" style="width: 100%; display: flex; align-items: center; flex-wrap: wrap; margin-top: 8%;">
+							<!-- Ortalanmış İçerik Alanı -->
+							<div class="container-fluid" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center;">
+								<div style="max-width: 650px; padding: 30px 15px; display: flex; flex-direction: column; align-items: center;">
 									
-									<!-- Sol Taraf: Beyaz ve Net Yazılar -->
-									<div class="col-md-7 col-sm-12" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">
-										<div class="desc" style="padding: 20px;">
-											<h1 style="color: white !important; font-size: 52px; font-weight: 700; margin-bottom: 15px; font-family: 'Playfair Display', serif; line-height: 1.2;">Hi! <br>I'm Ayşen Özün</h1>
-											<h2 style="color: #2c98f0 !important; font-size: 22px; font-weight: 400; margin-bottom: 30px; line-height: 1.5;">Lecturer at Suleyman Demirel University <br> Focusing on Computer Vision & AI</h2>
-											<p><a href="mailto:aysenturkcetin@sdu.edu.tr" class="btn btn-primary btn-learn" style="background: #2c98f0; border-color: #2c98f0; color: white; padding: 12px 25px; font-size: 16px;">Contact Me <i class="icon-briefcase3"></i></a></p>
-										</div>
+									<!-- ORTADA OVAL RESİM: Kenarları yumuşatılmış estetik oval form -->
+									<div style="width: 220px; height: 260px; border-radius: 45px; border: 4px solid rgba(255,255,255,0.8); box-shadow: 0px 15px 30px rgba(0,0,0,0.5); overflow: hidden; background-image: url(images/2pega.png); background-size: cover; background-position: center; margin-bottom: 25px;">
 									</div>
 									
-									<!-- Sağ Taraf: Dikkat Çekici Yuvarlak Resim -->
-									<div class="col-md-5 col-sm-12" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
-										<div style="width: 300px; height: 300px; border-radius: 50%; border: 6px solid white; box-shadow: 0px 15px 35px rgba(0,0,0,0.7); overflow: hidden; background-image: url(images/2pega.png); background-size: cover; background-position: center;">
-										</div>
-									</div>
-
+									<!-- Yazı Alanı: Parlak mavi kaldırıldı, soft tonlar getirildi -->
+									<h1 style="color: #ffffff !important; font-size: 42px; font-weight: 700; margin-bottom: 10px; font-family: 'Playfair Display', serif; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Hi! I'm Ayşen Özün</h1>
+									<h2 style="color: #d1d5db !important; font-size: 18px; font-weight: 300; margin-bottom: 25px; font-family: 'Quicksand', sans-serif; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">Lecturer at Suleyman Demirel University <br> Focusing on Computer Vision & AI</h2>
+									
+									<!-- Sade ve Şık Buton -->
+									<p><a href="mailto:aysenturkcetin@sdu.edu.tr" class="btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: #ffffff; padding: 10px 24px; font-size: 15px; border-radius: 50px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;">Contact Me</a></p>
 								</div>
 							</div>
 						</li>
 
 						<!-- 2. SLAYT: AI Researcher -->
-						<li style="position: relative; overflow: hidden; background: #1a1a1a;">
-							<!-- Derin Bulanık Arkaplan -->
-							<div class="overlay" style="position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px; background-image: url(images/robot.jpg); background-size: cover; background-position: center; filter: blur(15px) brightness(35%); z-index: 1;"></div>
+						<li style="position: relative; overflow: hidden; background: #151515; border-radius: 30px;">
+							<!-- Arkaplan Bulanıklığı -->
+							<div class="overlay" style="position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px; background-image: url(images/robot.jpg); background-size: cover; background-position: center; filter: blur(20px) brightness(30%); z-index: 1;"></div>
 							
-							<!-- İçerik Düzeni -->
-							<div class="container-fluid" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
-								<div class="row" style="width: 100%; display: flex; align-items: center; flex-wrap: wrap; margin-top: 8%;">
+							<!-- Ortalanmış İçerik Alanı -->
+							<div class="container-fluid" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center;">
+								<div style="max-width: 650px; padding: 30px 15px; display: flex; flex-direction: column; align-items: center;">
 									
-									<!-- Sol Taraf: Beyaz ve Net Yazılar -->
-									<div class="col-md-7 col-sm-12" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">
-										<div class="desc" style="padding: 20px;">
-											<h1 style="color: white !important; font-size: 52px; font-weight: 700; margin-bottom: 15px; font-family: 'Playfair Display', serif; line-height: 1.2;">I am an <br>AI Researcher</h1>
-											<h2 style="color: #2c98f0 !important; font-size: 22px; font-weight: 400; margin-bottom: 30px; line-height: 1.5;">Specialized in Real-World Intelligent Systems, Explainable AI (XAI) and Deep Learning.</h2>
-											<p><a href="#" data-nav-section="work" class="btn btn-primary btn-learn" style="background: #2c98f0; border-color: #2c98f0; color: white; padding: 12px 25px; font-size: 16px;">View Portfolio <i class="icon-briefcase3"></i></a></p>
-										</div>
+									<!-- ORTADA OVAL RESİM -->
+									<div style="width: 220px; height: 260px; border-radius: 45px; border: 4px solid rgba(255,255,255,0.8); box-shadow: 0px 15px 30px rgba(0,0,0,0.5); overflow: hidden; background-image: url(images/robot.jpg); background-size: cover; background-position: center; margin-bottom: 25px;">
 									</div>
 									
-									<!-- Sağ Taraf: Dikkat Çekici Yuvarlak Resim -->
-									<div class="col-md-5 col-sm-12" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
-										<div style="width: 300px; height: 300px; border-radius: 50%; border: 6px solid white; box-shadow: 0px 15px 35px rgba(0,0,0,0.7); overflow: hidden; background-image: url(images/robot.jpg); background-size: cover; background-position: center;">
-										</div>
-									</div>
-
+									<!-- Yazı Alanı -->
+									<h1 style="color: #ffffff !important; font-size: 42px; font-weight: 700; margin-bottom: 10px; font-family: 'Playfair Display', serif; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">I am an AI Researcher</h1>
+									<h2 style="color: #d1d5db !important; font-size: 18px; font-weight: 300; margin-bottom: 25px; font-family: 'Quicksand', sans-serif; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">Specialized in Real-World Intelligent Systems, Explainable AI (XAI) and Deep Learning.</h2>
+									
+									<!-- Sade ve Şık Buton -->
+									<p><a href="#" data-nav-section="work" class="btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: #ffffff; padding: 10px 24px; font-size: 15px; border-radius: 50px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;">View Portfolio</a></p>
 								</div>
 							</div>
 						</li>
