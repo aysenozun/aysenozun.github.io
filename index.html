@@ -88,44 +88,56 @@
 
 		</aside>
 
-		<div id="colorlib-main">
+<div id="colorlib-main">
 			<section id="colorlib-hero" class="js-fullheight" data-section="home">
 				<div class="flexslider js-fullheight">
 					<ul class="slides">
-					<li style="background-image: url(images/2pega.png);">
-						<div class="overlay" style="backdrop-filter: blur(6px); background: rgba(0, 0, 0, 0.45);"></div>
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
-									<div class="slider-text-inner js-fullheight">
-										<div class="desc">
-											<h1>Hi! <br>I'm Ayşen Özün</h1>
-											<h2>Lecturer at Suleyman Demirel University <br> Focusing on Computer Vision & AI</h2>
-											<p><a href="mailto:aysenturkcetin@sdu.edu.tr" class="btn btn-primary btn-learn">Contact Me <i class="icon-briefcase3"></i></a></p>
+
+						<!-- 1. SLAYT: Ayşen Özün Giriş -->
+						<li style="position: relative; overflow: hidden;">
+							<!-- Arkaplan Resmi ve Filtreler -->
+							<div class="overlay" style="position: absolute; top: -15px; left: -15px; right: -15px; bottom: -15px; background-image: url(images/2pega.png); background-size: cover; background-position: center; filter: blur(8px) brightness(55%); z-index: 1;"></div>
+							
+							<!-- İçerik Alanı (Yazıların net kalması için z-index: 2) -->
+							<div class="container-fluid" style="position: relative; z-index: 2;">
+								<div class="row">
+									<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
+										<div class="slider-text-inner js-fullheight">
+											<div class="desc">
+												<h1>Hi! <br>I'm Ayşen Özün</h1>
+												<h2>Lecturer at Suleyman Demirel University <br> Focusing on Computer Vision & AI</h2>
+												<p><a href="mailto:aysenturkcetin@sdu.edu.tr" class="btn btn-primary btn-learn">Contact Me <i class="icon-briefcase3"></i></a></p>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li style="background-image: url(images/robot.jpg);">
-						<div class="overlay"></div>
-						<div class="overlay" style="backdrop-filter: blur(6px); background: rgba(0, 0, 0, 0.45);"></div>
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
-									<div class="slider-text-inner">
-										<div class="desc">
-											<h1>I am an <br>AI Researcher</h1>
-											<h2>Specialized in Real-World Intelligent Systems, Explainable AI (XAI) and Deep Learning.</h2>
-											<p><a href="#" data-nav-section="work" class="btn btn-primary btn-learn">View Portfolio <i class="icon-briefcase3"></i></a></p>
+						</li>
+
+						<!-- 2. SLAYT: AI Researcher -->
+						<li style="position: relative; overflow: hidden;">
+							<!-- Arkaplan Resmi ve Filtreler -->
+							<div class="overlay" style="position: absolute; top: -15px; left: -15px; right: -15px; bottom: -15px; background-image: url(images/robot.jpg); background-size: cover; background-position: center; filter: blur(8px) brightness(55%); z-index: 1;"></div>
+							
+							<!-- İçerik Alanı (Hatalı div yapıları düzeltildi) -->
+							<div class="container-fluid" style="position: relative; z-index: 2;">
+								<div class="row">
+									<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
+										<div class="slider-text-inner">
+											<div class="desc">
+												<h1>I am an <br>AI Researcher</h1>
+												<h2>Specialized in Real-World Intelligent Systems, Explainable AI (XAI) and Deep Learning.</h2>
+												<p><a href="#" data-nav-section="work" class="btn btn-primary btn-learn">View Portfolio <i class="icon-briefcase3"></i></a></p>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</li>
+						</li>
+
 					</ul>
 				</div>
+			</section>
 			</section>
 
 			<section class="colorlib-about" data-section="about">
