@@ -56,7 +56,7 @@
 		aside#colorlib-aside { background: #ffffff !important; border-right: 1px solid #f0f0f0 !important; }
 		.colorlib-footer .separator { border-top: 1px solid #f0f0f0 !important; }
 
-		/* JS Çökmesini Önleyen Masaüstü Tam Ekran Yükseklik Kuralları */
+		/* Masaüstü Tam Ekran Yükseklik Yönetimi */
 		#colorlib-hero, 
 		#colorlib-hero .flexslider, 
 		#colorlib-hero .slides, 
@@ -65,7 +65,7 @@
 			min-height: 100vh !important;
 		}
 
-		/* Kahraman Bölümü İçerik Yerleşimi */
+		/* Slayt İçerik Konumlandırması */
 		.custom-hero-container {
 			position: relative;
 			z-index: 2;
@@ -102,7 +102,91 @@
 			background-position: center;
 		}
 
-		/* MOBİL RESPONSIVE AYARLARI (Maksimum 767px) */
+		/* --- YENİ MODERN 6GEN (HEXAGON) PORTFÖY CSS ALANI --- */
+		.hex-grid {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 40px 25px;
+			padding: 30px 0;
+		}
+		.hex-card {
+			width: 230px;
+			text-align: center;
+			transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+		}
+		.hex-card:hover {
+			transform: translateY(-8px);
+		}
+		.hex-holder {
+			width: 200px;
+			height: 220px;
+			margin: 0 auto 15px auto;
+			position: relative;
+			overflow: hidden;
+			/* Webkit destekli pürüzsüz altıgen maskeleme */
+			clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+			background: #f8f9fa;
+			box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+		}
+		.hex-holder img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.6s ease;
+		}
+		.hex-card:hover .hex-holder img {
+			transform: scale(1.12);
+		}
+		.hex-title {
+			font-family: 'Quicksand', sans-serif;
+			font-size: 14px;
+			font-weight: 700;
+			color: #2c3e50;
+			margin: 8px 0 4px 0;
+			line-height: 1.4;
+			min-height: 40px;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+		.hex-tag {
+			font-size: 11px;
+			color: #2c98f0;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-weight: 700;
+			margin-bottom: 8px;
+			display: block;
+		}
+		.hex-action-btn {
+			display: inline-block;
+			padding: 5px 16px;
+			font-size: 11px;
+			font-weight: 600;
+			border-radius: 30px;
+			background: #f1f5f9;
+			color: #64748b;
+			text-decoration: none !important;
+			transition: all 0.3s ease;
+			border: 1px solid #e2e8f0;
+		}
+		.hex-card:hover .hex-action-btn {
+			background: #2c98f0;
+			color: #ffffff;
+			border-color: #2c98f0;
+			box-shadow: 0 4px 12px rgba(44, 152, 240, 0.3);
+		}
+
+		/* Expertise (Services) Modern İkon Kutusu Güncellemesi */
+		.services .icon i {
+			font-size: 28px;
+			color: #ffffff;
+			line-height: 60px;
+		}
+
+		/* MOBİL RESPONSIVE AYARLARI */
 		@media (max-width: 767px) {
 			#colorlib-hero, 
 			#colorlib-hero .flexslider, 
@@ -113,7 +197,7 @@
 				min-height: 100vh !important;
 			}
 			.custom-hero-row {
-				flex-direction: column !important; /* Dikey dizilim */
+				flex-direction: column !important;
 				justify-content: center !important;
 				padding: 90px 15px 50px 15px !important;
 			}
@@ -126,14 +210,15 @@
 			.hero-text-col h1 { font-size: 34px !important; }
 			.hero-text-col h2 { font-size: 16px !important; margin-bottom: 25px !important; }
 			.hero-img-col {
-				order: -1; /* Resmi mobilde metnin yukarısına taşır */
+				order: -1;
 				padding: 0 !important;
 			}
 			.custom-oval-img {
-				width: 190px !important; /* Ekrandan taşmayan mobil ölçü */
+				width: 190px !important;
 				height: 230px !important;
 				border-radius: 35px !important;
 			}
+			.hex-grid { gap: 35px 15px; }
 		}
 	</style>
 	</head>
@@ -181,14 +266,9 @@
 
 						<!-- 1. SLAYT: Ayşen Özün Giriş -->
 						<li style="position: relative; overflow: hidden; background: #151515;">
-							<!-- Derin bulanık ve tam ekranı kaplayan arka plan katmanı -->
 							<div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(images/2pega.png); background-size: cover; background-position: center; filter: blur(20px) brightness(35%); z-index: 1;"></div>
-							
-							<!-- İçerik Alanı -->
 							<div class="container-fluid custom-hero-container">
 								<div class="row custom-hero-row">
-									
-									<!-- Sol Alan: Yazılar (Eski Düzen Sola Hizalı) -->
 									<div class="col-md-7 col-sm-12 hero-text-col">
 										<div class="desc">
 											<h1 style="color: #ffffff !important; font-weight: 700; margin-bottom: 15px; font-family: 'Playfair Display', serif; line-height: 1.2;">Hi! <br>I'm Ayşen Özün</h1>
@@ -196,26 +276,18 @@
 											<p><a href="mailto:aysenturkcetin@sdu.edu.tr" class="btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: #ffffff; padding: 12px 28px; font-size: 15px; border-radius: 50px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;">Contact Me</a></p>
 										</div>
 									</div>
-									
-									<!-- Sağ Alan: Yumuşatılmış Oval Resim -->
 									<div class="col-md-5 col-sm-12 hero-img-col">
 										<div class="custom-oval-img" style="background-image: url(images/2pega.png);"></div>
 									</div>
-
 								</div>
 							</div>
 						</li>
 
 						<!-- 2. SLAYT: AI Researcher -->
 						<li style="position: relative; overflow: hidden; background: #151515;">
-							<!-- Derin bulanık ve tam ekranı kaplayan arka plan katmanı -->
 							<div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(images/robot.jpg); background-size: cover; background-position: center; filter: blur(20px) brightness(35%); z-index: 1;"></div>
-							
-							<!-- İçerik Alanı -->
 							<div class="container-fluid custom-hero-container">
 								<div class="row custom-hero-row">
-									
-									<!-- Sol Alan: Yazılar (Eski Düzen Sola Hizalı) -->
 									<div class="col-md-7 col-sm-12 hero-text-col">
 										<div class="desc">
 											<h1 style="color: #ffffff !important; font-weight: 700; margin-bottom: 15px; font-family: 'Playfair Display', serif; line-height: 1.2;">I am an <br>AI Researcher</h1>
@@ -223,12 +295,9 @@
 											<p><a href="#" data-nav-section="work" class="btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: #ffffff; padding: 12px 28px; font-size: 15px; border-radius: 50px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;">View Portfolio</a></p>
 										</div>
 									</div>
-									
-									<!-- Sağ Alan: Yumuşatılmış Oval Resim -->
 									<div class="col-md-5 col-sm-12 hero-img-col">
 										<div class="custom-oval-img" style="background-image: url(images/robot.jpg);"></div>
 									</div>
-
 								</div>
 							</div>
 						</li>
@@ -294,6 +363,7 @@
 				</div>
 			</section>
 			
+			<!-- EXPERTISE ALANI: Kırık Ikonlar FontAwesome ile Pürüzsüzleştirildi -->
 			<section class="colorlib-services" data-section="services">
 				<div class="colorlib-narrow-content">
 					<div class="row">
@@ -306,7 +376,7 @@
 						<div class="col-md-4 text-center animate-box">
 							<div class="services color-1">
 								<span class="icon">
-									<i class="icon-bulb"></i>
+									<i class="fa-solid fa-brain"></i>
 								</span>
 								<div class="desc">
 									<h3>Artificial Intelligence</h3>
@@ -317,7 +387,7 @@
 						<div class="col-md-4 text-center animate-box">
 							<div class="services color-2">
 								<span class="icon">
-									<i class="icon-eye"></i>
+									<i class="fa-solid fa-eye"></i>
 								</span>
 								<div class="desc">
 									<h3>Computer Vision</h3>
@@ -328,7 +398,7 @@
 						<div class="col-md-4 text-center animate-box">
 							<div class="services color-3">
 								<span class="icon">
-									<i class="icon-data"></i>
+									<i class="fa-solid fa-network-wired"></i>
 								</span>
 								<div class="desc">
 									<h3>Deep Learning & Tensorflow</h3>
@@ -339,7 +409,7 @@
 						<div class="col-md-4 text-center animate-box">
 							<div class="services color-4">
 								<span class="icon">
-									<i class="icon-layers2"></i>
+									<i class="fa-solid fa-expand"></i>
 								</span>
 								<div class="desc">
 									<h3>Object Detection</h3>
@@ -350,7 +420,7 @@
 						<div class="col-md-4 text-center animate-box">
 							<div class="services color-5">
 								<span class="icon">
-									<i class="icon-camera3"></i>
+									<i class="fa-solid fa-wave-square"></i>
 								</span>
 								<div class="desc">
 									<h3>Image & Signal Processing</h3>
@@ -361,7 +431,7 @@
 						<div class="col-md-4 text-center animate-box">
 							<div class="services color-6">
 								<span class="icon">
-									<i class="icon-globe-outline"></i>
+									<i class="fa-solid fa-code"></i>
 								</span>
 								<div class="desc">
 									<h3>Web Development</h3>
@@ -618,6 +688,7 @@
 				</div>
 			</section>
 
+			<!-- PORTFOLIO ALANI: Patlayan Kareler Yerine Şık & Minimal Hexagon (6gen) Kart Tasarımı -->
 			<section class="colorlib-work" data-section="work">
 				<div class="colorlib-narrow-content">
 					<div class="row">
@@ -627,89 +698,70 @@
 						</div>
 					</div>
 					
-					<div class="row">
-						<!-- Portfolio 1 -->
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="project" style="background-image: url(./assets/images/lung.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="https://ieeexplore.ieee.org/document/10416075" target="_blank">AI Approach in Post-COVID-19 Lung Diseases</a></h3>
-										<span>Academic Studies</span>
-										<p class="icon">
-											<span><a href="https://ieeexplore.ieee.org/document/10416075" target="_blank"><i class="icon-share3"></i> View Paper</a></span>
-										</p>
+					<div class="row animate-box" data-animate-effect="fadeInUp">
+						<div class="col-md-12">
+							<div class="hex-grid">
+								
+								<!-- 6gen Kart 1 -->
+								<div class="hex-card">
+									<div class="hex-holder">
+										<img src="./assets/images/lung.png" alt="Lung Disease AI">
 									</div>
+									<span class="hex-tag">Academic Studies</span>
+									<h4 class="hex-title">AI Approach in Post-COVID-19 Lung Diseases</h4>
+									<a href="https://ieeexplore.ieee.org/document/10416075" target="_blank" class="hex-action-btn">View Paper</a>
 								</div>
-							</div>
-						</div>
-						<!-- Portfolio 2 -->
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="project" style="background-image: url(./assets/images/fever.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="https://www.researchgate.net/publication/354765874_Fever_Detection_from_Human_Thermal_Images_with_Deep_Learning_Methods" target="_blank">Fever Detection from Thermal Images</a></h3>
-										<span>TÜBİTAK - Academic Studies</span>
-										<p class="icon">
-											<span><a href="https://www.researchgate.net/publication/354765874_Fever_Detection_from_Human_Thermal_Images_with_Deep_Learning_Methods" target="_blank"><i class="icon-share3"></i> View Paper</a></span>
-										</p>
+
+								<!-- 6gen Kart 2 -->
+								<div class="hex-card">
+									<div class="hex-holder">
+										<img src="./assets/images/fever.png" alt="Fever Detection">
 									</div>
+									<span class="hex-tag">TÜBİTAK Study</span>
+									<h4 class="hex-title">Fever Detection from Thermal Images</h4>
+									<a href="https://www.researchgate.net/publication/354765874_Fever_Detection_from_Human_Thermal_Images_with_Deep_Learning_Methods" target="_blank" class="hex-action-btn">View Paper</a>
 								</div>
-							</div>
-						</div>
-						<!-- Portfolio 3 -->
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInTop">
-							<div class="project" style="background-image: url(./assets/images/brainn.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="https://link.springer.com/chapter/10.1007/978-3-030-79357-9_62" target="_blank">Deep Learning Classification for Brain MR</a></h3>
-										<span>Academic Studies</span>
-										<p class="icon">
-											<span><a href="https://link.springer.com/chapter/10.1007/978-3-030-79357-9_62" target="_blank"><i class="icon-share3"></i> View Paper</a></span>
-										</p>
+
+								<!-- 6gen Kart 3 -->
+								<div class="hex-card">
+									<div class="hex-holder">
+										<img src="./assets/images/brainn.png" alt="Brain MR Classification">
 									</div>
+									<span class="hex-tag">Academic Studies</span>
+									<h4 class="hex-title">Deep Learning Classification for Brain MR</h4>
+									<a href="https://link.springer.com/chapter/10.1007/978-3-030-79357-9_62" target="_blank" class="hex-action-btn">View Paper</a>
 								</div>
-							</div>
-						</div>
-						<!-- Portfolio 4 -->
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInBottom">
-							<div class="project" style="background-image: url(./assets/images/ai.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="https://www.youtube.com/shorts/SFdGlDOXogw" target="_blank">Object Detection Model</a></h3>
-										<span>Applications</span>
-										<p class="icon">
-											<span><a href="https://www.youtube.com/shorts/SFdGlDOXogw" target="_blank"><i class="icon-share3"></i> Watch Video</a></span>
-										</p>
+
+								<!-- 6gen Kart 4 -->
+								<div class="hex-card">
+									<div class="hex-holder">
+										<img src="./assets/images/ai.png" alt="Object Detection">
 									</div>
+									<span class="hex-tag">Applications</span>
+									<h4 class="hex-title">Object Detection Real-Time Model</h4>
+									<a href="https://www.youtube.com/shorts/SFdGlDOXogw" target="_blank" class="hex-action-btn">Watch Video</a>
 								</div>
-							</div>
-						</div>
-						<!-- Portfolio 5 -->
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="project" style="background-image: url(./assets/images/ml.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="https://link.springer.com/chapter/10.1007/978-3-030-79357-9_48" target="_blank">Time Series Analysis on EEG Data</a></h3>
-										<span>Academic Studies</span>
-										<p class="icon">
-											<span><a href="https://link.springer.com/chapter/10.1007/978-3-030-79357-9_48" target="_blank"><i class="icon-share3"></i> View Paper</a></span>
-										</p>
+
+								<!-- 6gen Kart 5 -->
+								<div class="hex-card">
+									<div class="hex-holder">
+										<img src="./assets/images/ml.png" alt="EEG Time Series">
 									</div>
+									<span class="hex-tag">Academic Studies</span>
+									<h4 class="hex-title">Time Series Analysis on EEG Data</h4>
+									<a href="https://link.springer.com/chapter/10.1007/978-3-030-79357-9_48" target="_blank" class="hex-action-btn">View Paper</a>
 								</div>
-							</div>
-						</div>
-						<!-- Portfolio 6 -->
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="project" style="background-image: url(./assets/images/robot.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="https://www.youtube.com/shorts/NWL1JMbTzbE" target="_blank">Computer Vision Project</a></h3>
-										<span>Applications</span>
-										<p class="icon">
-											<span><a href="https://www.youtube.com/shorts/NWL1JMbTzbE" target="_blank"><i class="icon-share3"></i> Watch Video</a></span>
-										</p>
+
+								<!-- 6gen Kart 6 -->
+								<div class="hex-card">
+									<div class="hex-holder">
+										<img src="./assets/images/robot.png" alt="Computer Vision">
 									</div>
+									<span class="hex-tag">Applications</span>
+									<h4 class="hex-title">Computer Vision Advanced Project</h4>
+									<a href="https://www.youtube.com/shorts/NWL1JMbTzbE" target="_blank" class="hex-action-btn">Watch Video</a>
 								</div>
+
 							</div>
 						</div>
 					</div>
