@@ -49,15 +49,80 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
-<style>
-		/* Sol menüyü ve arka planı tamamen beyaz yapar */
+	<style>
+		/* Global Yerleşim ve Temiz Beyaz Arkaplan Ayarları */
+		html, body { overflow-x: hidden !important; background: #ffffff !important; }
 		body, #colorlib-page, .container-wrap { background: #ffffff !important; }
 		aside#colorlib-aside { background: #ffffff !important; border-right: 1px solid #f0f0f0 !important; }
-		/* Sosyal medya ikonlarının altındaki gri çizgiyi beyazlatır */
 		.colorlib-footer .separator { border-top: 1px solid #f0f0f0 !important; }
+
+		/* Kahraman Kesiti Masaüstü (Flex Mimari Düzeni) */
+		.custom-hero-row {
+			display: flex !important;
+			align-items: center !important;
+			height: 100%;
+			width: 100%;
+			margin: 0 !important;
+		}
+		.hero-text-col {
+			color: white;
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+			text-align: left;
+			padding-left: 8% !important;
+		}
+		.hero-img-col {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
+		}
+		.custom-oval-img {
+			width: 240px;
+			height: 290px;
+			border-radius: 45px;
+			border: 4px solid rgba(255,255,255,0.8);
+			box-shadow: 0px 15px 35px rgba(0,0,0,0.6);
+			overflow: hidden;
+			background-size: cover;
+			background-position: center;
+		}
+
+		/* MOBİL RESPONSIVE AYARLARI (Maksimum 767px) */
+		@media (max-width: 767px) {
+			/* Anlık beyaz ekran gecikmesini ve yükseklik çökmesini engeller */
+			.flexslider, .js-fullheight, .slides, .slides li {
+				height: auto !important;
+				min-height: 100vh !important;
+			}
+			.custom-hero-row {
+				flex-direction: column !important; /* Bileşenleri dikey hizalar */
+				justify-content: center !important;
+				padding: 90px 15px 40px 15px !important; /* Üst menü taşma payı */
+			}
+			.hero-text-col {
+				text-align: center !important;
+				padding-left: 15px !important;
+				padding-right: 15px !important;
+				margin-top: 20px;
+			}
+			.hero-text-col h1 {
+				font-size: 34px !important;
+			}
+			.hero-text-col h2 {
+				font-size: 16px !important;
+				margin-bottom: 25px !important;
+			}
+			.hero-img-col {
+				order: -1; /* Resmi yazının üzerine taşır */
+				padding: 0 !important;
+			}
+			.custom-oval-img {
+				width: 190px !important; /* Ekran dışına taşmayı önleyen mobil boyut */
+				height: 230px !important;
+				border-radius: 35px !important;
+			}
+		}
 	</style>
-</head>
-		
 	</head>
 	<body>
 	<div id="colorlib-page">
@@ -85,7 +150,7 @@
 				</div>
 			</nav>
 
-	<div class="colorlib-footer">
+			<div class="colorlib-footer">
 				<ul style="padding: 0; margin: 0 0 15px 0; list-style: none; display: flex; justify-content: center; gap: 20px;">
 					<li><a href="https://twitter.com/HatunofScience" target="_blank" style="color: #1DA1F2 !important; font-size: 24px !important;"><i class="fa-brands fa-x-twitter"></i></a></li>
 					<li><a href="https://www.instagram.com/aysenozun/" target="_blank" style="color: #E1306C !important; font-size: 24px !important;"><i class="fa-brands fa-instagram"></i></a></li>
@@ -94,38 +159,34 @@
 				</ul>
 				<p><small>&copy; Copyright <script>document.write(new Date().getFullYear());</script> All rights reserved.</small></p>
 			</div>
-
 		</aside>
 
-<div id="colorlib-main">
+		<div id="colorlib-main">
+			<section id="colorlib-hero" class="js-fullheight" data-section="home" style="overflow: hidden;">
+				<div class="flexslider js-fullheight">
+					<ul class="slides">
 
-		
-			<section id="colorlib-hero" class="js-fullheight" data-section="home" style="overflow: hidden; height: 100vh;">
-				<div class="flexslider js-fullheight" style="height: 100%;">
-					<ul class="slides" style="height: 100%; margin: 0; padding: 0;">
-
-					
-						<li style="position: relative; overflow: hidden; background: #151515; height: 100vh;">
-							<!-- Tüm kesiti kaplayan derin bulanık arka plan (Açık alanı tamamen kapatır) -->
+						<!-- 1. SLAYT: Ayşen Özün Giriş -->
+						<li style="position: relative; overflow: hidden; background: #151515;">
+							<!-- Tüm kesiti tam kaplayan derin bulanık arka plan katmanı -->
 							<div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(images/2pega.png); background-size: cover; background-position: center; filter: blur(20px) brightness(35%); z-index: 1;"></div>
 							
-							<!-- İçerik Düzeni: Yazı solda, resim sağda -->
-							<div class="container-fluid" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
-								<div class="row" style="width: 100%; display: flex; align-items: center; flex-wrap: wrap;">
+							<!-- İçerik Düzeni -->
+							<div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+								<div class="row custom-hero-row">
 									
-									<!-- Sol Taraf: Yazılar (Sola yaslı ve eski düzen) -->
-									<div class="col-md-7 col-sm-12" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); text-align: left; padding-left: 8%;">
+									<!-- Sol Katman: Başlık ve Açıklamalar -->
+									<div class="col-md-7 col-sm-12 hero-text-col">
 										<div class="desc">
-											<h1 style="color: #ffffff !important; font-size: 46px; font-weight: 700; margin-bottom: 15px; font-family: 'Playfair Display', serif; line-height: 1.2;">Hi! <br>I'm Ayşen Özün</h1>
-											<h2 style="color: #d1d5db !important; font-size: 18px; font-weight: 300; margin-bottom: 30px; font-family: 'Quicksand', sans-serif; line-height: 1.5;">Lecturer at Suleyman Demirel University <br> Focusing on Computer Vision & AI</h2>
+											<h1 style="color: #ffffff !important; font-weight: 700; margin-bottom: 15px; font-family: 'Playfair Display', serif; line-height: 1.2;">Hi! <br>I'm Ayşen Özün</h1>
+											<h2 style="color: #d1d5db !important; font-weight: 300; margin-bottom: 30px; font-family: 'Quicksand', sans-serif; line-height: 1.5;">Lecturer at Suleyman Demirel University <br> Focusing on Computer Vision & AI</h2>
 											<p><a href="mailto:aysenturkcetin@sdu.edu.tr" class="btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: #ffffff; padding: 12px 28px; font-size: 15px; border-radius: 50px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;">Contact Me</a></p>
 										</div>
 									</div>
 									
-									<!-- Sağ Taraf: Şık Oval Resim -->
-									<div class="col-md-5 col-sm-12" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
-										<div style="width: 240px; height: 290px; border-radius: 45px; border: 4px solid rgba(255,255,255,0.8); box-shadow: 0px 15px 35px rgba(0,0,0,0.6); overflow: hidden; background-image: url(images/2pega.png); background-size: cover; background-position: center;">
-										</div>
+									<!-- Sağ Katman: Oval Fotoğraf Alanı -->
+									<div class="col-md-5 col-sm-12 hero-img-col">
+										<div class="custom-oval-img" style="background-image: url(images/2pega.png);"></div>
 									</div>
 
 								</div>
@@ -133,27 +194,26 @@
 						</li>
 
 						<!-- 2. SLAYT: AI Researcher -->
-						<li style="position: relative; overflow: hidden; background: #151515; height: 100vh;">
-							<!-- Tüm kesiti kaplayan derin bulanık arka plan -->
+						<li style="position: relative; overflow: hidden; background: #151515;">
+							<!-- Tüm kesiti tam kaplayan derin bulanık arka plan katmanı -->
 							<div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(images/robot.jpg); background-size: cover; background-position: center; filter: blur(20px) brightness(35%); z-index: 1;"></div>
 							
-							<!-- İçerik Düzeni: Yazı solda, resim sağda -->
-							<div class="container-fluid" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
-								<div class="row" style="width: 100%; display: flex; align-items: center; flex-wrap: wrap;">
+							<!-- İçerik Düzeni -->
+							<div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+								<div class="row custom-hero-row">
 									
-									<!-- Sol Taraf: Yazılar (Sola yaslı ve eski düzen) -->
-									<div class="col-md-7 col-sm-12" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); text-align: left; padding-left: 8%;">
+									<!-- Sol Katman: Başlık ve Açıklamalar -->
+									<div class="col-md-7 col-sm-12 hero-text-col">
 										<div class="desc">
-											<h1 style="color: #ffffff !important; font-size: 46px; font-weight: 700; margin-bottom: 15px; font-family: 'Playfair Display', serif; line-height: 1.2;">I am an <br>AI Researcher</h1>
-											<h2 style="color: #d1d5db !important; font-size: 18px; font-weight: 300; margin-bottom: 30px; font-family: 'Quicksand', sans-serif; line-height: 1.5;">Specialized in Real-World Intelligent Systems, Explainable AI (XAI) and Deep Learning.</h2>
+											<h1 style="color: #ffffff !important; font-weight: 700; margin-bottom: 15px; font-family: 'Playfair Display', serif; line-height: 1.2;">I am an <br>AI Researcher</h1>
+											<h2 style="color: #d1d5db !important; font-weight: 300; margin-bottom: 30px; font-family: 'Quicksand', sans-serif; line-height: 1.5;">Specialized in Real-World Intelligent Systems, Explainable AI (XAI) and Deep Learning.</h2>
 											<p><a href="#" data-nav-section="work" class="btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: #ffffff; padding: 12px 28px; font-size: 15px; border-radius: 50px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;">View Portfolio</a></p>
 										</div>
 									</div>
 									
-									<!-- Sağ Taraf: Şık Oval Resim -->
-									<div class="col-md-5 col-sm-12" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
-										<div style="width: 240px; height: 290px; border-radius: 45px; border: 4px solid rgba(255,255,255,0.8); box-shadow: 0px 15px 35px rgba(0,0,0,0.6); overflow: hidden; background-image: url(images/robot.jpg); background-size: cover; background-position: center;">
-										</div>
+									<!-- Sağ Katman: Oval Fotoğraf Alanı -->
+									<div class="col-md-5 col-sm-12 hero-img-col">
+										<div class="custom-oval-img" style="background-image: url(images/robot.jpg);"></div>
 									</div>
 
 								</div>
