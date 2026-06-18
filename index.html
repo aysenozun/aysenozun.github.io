@@ -663,7 +663,7 @@
 				</div>
 			</section>
 
-			<!-- PORTFOLIO ALANI: Patlayan Kareler Yerine Şık & Minimal Hexagon (6gen) Kart Tasarımı -->
+
 			<section class="colorlib-work" data-section="work">
 				<div class="colorlib-narrow-content">
 					<div class="row">
@@ -743,6 +743,29 @@
 				</div>
 			</section>
 
+			<section class="colorlib-work" data-section="work">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">My Work</span>
+							<h2 class="colorlib-heading animate-box">My Channel</h2>
+						</div>
+					</div>
+					
+					<div class="row animate-box" data-animate-effect="fadeInUp">
+						<div class="col-md-12">
+							<!-- JavaScript videoları otomatik olarak  grid-->
+							<div id="youtube-hex-grid" class="hex-grid">
+								<div style="text-align: center; color: #666; width: 100%; padding: 40px;">
+									<i class="fa-solid fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px;"></i>
+									<p>Loading latest projects from YouTube...</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
 			<section class="colorlib-blog" data-section="blog">
 				<div class="colorlib-narrow-content">
 					<div class="row">
@@ -848,5 +871,64 @@
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 
+
+<script>
+		document.addEventListener("DOMContentLoaded", function() {
+		
+			const channelId = "UCCTMqWnrBgNS81tudLfiNsw"; 
+			
+			// YouTube RSS akışını CORS engeline takılmadan JSON'a çeviren ücretsiz proxy url'i
+			const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+			const apiLink = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+			const gridContainer = document.getElementById("youtube-hex-grid");
+
+			fetch(apiLink)
+				.then(response => response.json())
+				.then(data => {
+					if (data.status === 'ok' && data.items.length > 0) {
+						// Gridin içindeki "Yükleniyor..." spinner'ını temizle
+						gridContainer.innerHTML = "";
+
+						// En son yüklenen ilk 6 videoyu alıyoruz
+						const latestVideos = data.items.slice(0, 6);
+
+						latestVideos.forEach(video => {
+							// Başlık çok uzunsa kart tasarımını bozmasın diye kırpıyoruz
+							const shortTitle = video.title.length > 55 ? video.title.substring(0, 52) + "..." : video.title;
+							
+							// Senin hazırladığın Hexagon şablon yapısını dinamik string literal
+							const cardHtml = `
+								<div class="hex-card" style="opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s forwards;">
+									<div class="hex-holder">
+										<img src="${video.thumbnail}" alt="${video.title}">
+									</div>
+									<span class="hex-tag">YouTube Video</span>
+									<h4 class="hex-title" title="${video.title}">${shortTitle}</h4>
+									<a href="${video.link}" target="_blank" class="hex-action-btn">Watch Video</a>
+								</div>
+							`;
+							gridContainer.innerHTML += cardHtml;
+						});
+					} else {
+						showFallbackMessage();
+					}
+				})
+				.catch(error => {
+					console.error("YouTube API Error:", error);
+					showFallbackMessage();
+				});
+
+			// Herhangi bir API hatasında sayfanın boş kalmaması için güvenli yedek mesaj fonksiyonu
+			function showFallbackMessage() {
+				gridContainer.innerHTML = `
+					<div style="text-align: center; color: #ff4d4d; width: 100%; padding: 20px;">
+						<p><i class="fa-solid fa-circle-exclamation"></i> Dynamic feed could not be loaded. Please visit my official <a href="https://github.com/aysenozun" target="_blank" style="text-decoration:underline;">GitHub</a> or YouTube channel.</p>
+					</div>`;
+			}
+		});
+	</script>
+
+		
 	</body>
 </html>
