@@ -797,7 +797,7 @@
 				</div>
 			</section>
 
-            <!-- YENİ BÖLÜM: ORCID API ile Otomatik Yayınlar -->
+            <!-- ORCID API ile Otomatik Yayınlar -->
             <section class="colorlib-work" data-section="publications" style="padding-bottom: 60px;">
                 <div class="colorlib-narrow-content">
                     <div class="row">
@@ -828,7 +828,7 @@
                 </div>
             </section>
 
-            <!-- YENİ BÖLÜM: ORCID API ile Otomatik Hakemlikler (Peer Reviews) -->
+            <!-- ORCID API ile Otomatik Hakemlikler (Peer Reviews) -->
             <section class="colorlib-work" data-section="peer-review" style="padding-bottom: 60px;">
                 <div class="colorlib-narrow-content">
                     <div class="row">
@@ -1122,9 +1122,8 @@
 
             let journalCounts = {};
 
-            // Bütün hakemlik kayıtlarını tarayıp toplayan akıllı döngü
             groups.forEach(group => {
-                let journalName = "Unknown Journal";
+                let journalName = "";
                 let countForThisGroup = 0;
 
                 if (group['peer-review-group']) {
@@ -1132,23 +1131,31 @@
                         if (prg['peer-review-summary']) {
                             countForThisGroup += prg['peer-review-summary'].length;
                             
-                            if (journalName === "Unknown Journal") {
-                                const summary = prg['peer-review-summary'][0];
-                                if (summary['convening-organization'] && summary['convening-organization'].name) {
-                                    journalName = summary['convening-organization'].name;
-                                } else if (summary['review-group-id']) {
-                                    journalName = summary['review-group-id'];
+                            prg['peer-review-summary'].forEach(summary => {
+                                if (journalName === "") {
+                                    let orgName = summary['convening-organization'] ? summary['convening-organization'].name : "";
+                                    let groupId = summary['review-group-id'] ? summary['review-group-id'] : "";
+                                    
+                                    if (groupId.toLowerCase().includes("review activity for")) {
+                                        journalName = groupId;
+                                    } else if (orgName && !orgName.toLowerCase().includes("elsevier") && !orgName.toLowerCase().includes("sage")) {
+                                        journalName = orgName;
+                                    } else if (groupId && !groupId.toLowerCase().startsWith("issn")) {
+                                        journalName = groupId;
+                                    }
                                 }
-                            }
+                            });
                         }
                     });
                 }
 
-                // Web of Science'ın saçma isimlerini temizleme
+                if (!journalName) journalName = "Unknown Journal";
+                
+                // WoS metinlerini temizle
                 journalName = journalName.replace(/review activity for/gi, '').trim();
                 journalName = journalName.replace(/\.$/, '').trim();
+                journalName = journalName.replace(/^journal, /gi, '').trim();
 
-                // Sayıları birleştir
                 if (journalCounts[journalName]) {
                     journalCounts[journalName] += countForThisGroup;
                 } else {
@@ -1158,7 +1165,6 @@
 
             let htmlContent = '<div style="display: flex; flex-wrap: wrap; gap: 15px;">';
 
-            // Toplanan dergileri ve tam sayılarını ekrana bastır
             for (const [journal, count] of Object.entries(journalCounts)) {
                 htmlContent += `
                     <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 25px; border-radius: 50px; display: flex; align-items: center; gap: 12px; transition: all 0.3s ease; cursor: default;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 15px rgba(0,0,0,0.05)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
